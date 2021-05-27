@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: default
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: khairulhabib/tcp-proxy:0.0.2
+        ports:
+        - containerPort: 9000
+        env:
+          - name: BACKEND_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: nginx-properties
+                key: BACKEND_HOST
+          - name: BACKEND_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: nginx-properties
+                key: BACKEND_PORT

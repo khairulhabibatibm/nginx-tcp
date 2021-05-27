@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: ibm-ingress-deploy-config
+ namespace: kube-system
+data:
+ public-crc20ooqst01g7eunnpqog-alb2: '{"defaultBackendService":"default/nginx-deployment","tcpServicesConfig":"kube-system/tcp-services"}'

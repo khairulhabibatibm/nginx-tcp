@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-properties
+data:
+  # property-like keys; each key maps to a simple value
+  BACKEND_HOST: "http://10.2.224.234"
+  BACKEND_PORT: "8080"

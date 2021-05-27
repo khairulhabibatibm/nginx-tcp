@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+ name: myingressresource
+ annotations:
+   ingress.bluemix.net/tcp-ports: "serviceName=default/nginx-deployment ingressPort=9000 servicePort=9000"
+   ingress.bluemix.net/custom-port: "protocol=http port=80;protocol=https port=443;protocol=tcp port=9000"
+spec:
+ tls:
+ - hosts:
+   - iks-vpn-cluster-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000.jp-tok.containers.appdomain.cloud
+   secretName: iks-vpn-cluster-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000
+ rules:
+ - host: iks-vpn-cluster-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000.jp-tok.containers.appdomain.cloud
+   http:
+     paths:
+     - path: /
+       pathType: ImplementationSpecific
+       backend:
+         service:
+           name: nginx-deployment
+           port:
+             number: 9000

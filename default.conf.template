@@ -1,0 +1,4 @@
+server { 
+  listen 9000;
+  proxy_pass ${BACKEND_HOST}:${BACKEND_PORT};
+}
