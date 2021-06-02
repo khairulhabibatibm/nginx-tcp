@@ -4,5 +4,5 @@ metadata:
   name: nginx-properties
 data:
   # property-like keys; each key maps to a simple value
-  BACKEND_HOST: "http://10.2.224.234"
-  BACKEND_PORT: "8080"
+  BACKEND_HOST: "10.2.192.151"
+  BACKEND_PORT: "1433"
